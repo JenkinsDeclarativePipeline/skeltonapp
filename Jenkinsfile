@@ -39,16 +39,18 @@ pipeline
             environment
             {
                 SONAR_CRED = credentials('sonar-9.9.2')
+                SONAR_CRED_VAR = '$SONAR_CRED_PSW'
             } 
             steps
             {
-                withSonarQubeEnv('sonar-9.9.2') 
-                {
+            echo "${SONAR_CRED_VAR}"
+            withSonarQubeEnv('sonar-9.9.2') 
+            {
         
-            sh "mvn clean verify sonar:sonar \
+            sh 'mvn clean sonar:sonar \
                 -Dsonar.projectKey=maven-practice \
                 -Dsonar.host.url=http://3.26.196.57:9000 \
-                -Dsonar.login="$SONAR_CRED_PSW""
+                -Dsonar.login=${SONAR_CRED_VAR}'
         }
         }
     }
