@@ -8,6 +8,10 @@ pipeline
     {
         string(name: 'branch', defaultValue: 'master', description: 'Enter branch name')
     }
+    tools
+            {
+                maven 'mvn-3.9.5'
+            }
     stages
     {
         stage('SCM-Checkout')
@@ -23,10 +27,7 @@ pipeline
         }
         stage('Build-Project')
         {
-            tools
-            {
-                maven 'mvn-3.9.5'
-            }
+            
             steps
             {
                 echo "===============================BUILD-PROJECT===================================="
