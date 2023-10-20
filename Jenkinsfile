@@ -12,11 +12,7 @@ pipeline
     {
                 maven 'mvn-3.9.5'
     }
-    environment
-    {
-        SONAR_CRED = credentials('sonar-9.9.2')
-                //SONAR_CRED_VAR = '$SONAR_CRED_PSW'
-    }       
+       
     stages
     {
         stage('SCM-Checkout')
@@ -41,10 +37,14 @@ pipeline
         }
         stage('SonarQube analysis')
             {
+            environment
+            {
+                usr_cred = credentials('sonar-9.9.2')
+            }
  
             steps
             {
-                echo "sonar-cred $SONAR_CRED_PSW"
+                echo "sonar-cred $usr_cred_psw"
 
                 withSonarQubeEnv('sonar-9.9.2') 
                 {
