@@ -43,16 +43,8 @@ pipeline
             } 
             steps
             {
-            echo "${SONAR_CRED_VAR}"
-            withSonarQubeEnv('sonar-9.9.2') 
-            {
-        
-            sh 'mvn clean sonar:sonar \
-                -Dsonar.projectKey=maven-practice \
-                -Dsonar.host.url=http://3.26.196.57:9000 \
-                -Dsonar.login= "$SONAR_CRED_PSW"'
-        }
-        }
+                echo 'sonar-cred $SONAR_CRED_PSW'
+            }
     }
     
     }
