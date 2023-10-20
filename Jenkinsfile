@@ -47,7 +47,7 @@ pipeline
             sh "mvn sonar:sonar \
             -Dsonar.projectKey=maven-project \
             -Dsonar.host.url=http://3.26.196.57:9000 \
-            -Dsonar.login=sqp_5a5a5ab5c37e4393ba8864f847d3e63bfa4f6be4"
+            -Dsonar.login=$sonar_cred_PSW"
         }
         }
     }
