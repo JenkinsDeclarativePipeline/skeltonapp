@@ -39,7 +39,7 @@ pipeline
             {
             environment
             {
-                usr_cred = credentials('sonar-9.9.2')
+                usr_cred = credentials('sonar_cred')
             }
  
             steps
