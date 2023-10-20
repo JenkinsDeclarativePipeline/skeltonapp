@@ -14,6 +14,7 @@ pipeline
         {
             steps
             {
+                echo "===============================${branch}===================================="
                 checkout scmGit(branches: [[name: '${branch}']],
                 userRemoteConfigs: [
                     [ url: 'https://github.com/JenkinsDeclarativePipeline/skeltonapp.git' ]
