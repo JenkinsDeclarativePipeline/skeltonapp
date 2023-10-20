@@ -21,5 +21,17 @@ pipeline
                 ])
             }
         }
+        stage('Build-Project')
+        {
+            tools
+            {
+                maven 'mvn-3.9.5'
+            }
+            steps
+            {
+                echo "===============================BUILD-PROJECT===================================="
+                sh 'mvn clean package'
+            }
+        }
     }
 }
