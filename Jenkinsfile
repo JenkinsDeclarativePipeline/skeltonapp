@@ -44,7 +44,7 @@ pipeline
  
             steps
             {
-                echo 'sonar-cred ${SONAR_CRED_PSW}'
+                sh 'echo "sonar-cred $SONAR_CRED_PSW"'
             }
     }
     
