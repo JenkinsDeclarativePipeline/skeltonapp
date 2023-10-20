@@ -45,10 +45,10 @@ pipeline
                 withSonarQubeEnv('sonar-9.9.2') 
                 {
         
-            sh "mvn clean verify sonar:sonar \
+            sh 'mvn clean verify sonar:sonar \
                 -Dsonar.projectKey=maven-practice \
                 -Dsonar.host.url=http://3.26.196.57:9000 \
-                -Dsonar.login=sqp_a39cde1e37b3368b3ce32873897575263deaed4a"
+                -Dsonar.login="$sonar_cred_PSW"'
         }
         }
     }
