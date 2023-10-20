@@ -11,11 +11,7 @@ pipeline
     tools
             {
                 maven 'mvn-3.9.5'
-            }
-     environment
-             {
-                sonar_cred = credentials('sonar-9.9.2')
-            }        
+            }       
     stages
     {
         stage('SCM-Checkout')
@@ -40,7 +36,10 @@ pipeline
         }
         stage('SonarQube analysis')
             {
-
+            environment
+            {
+                sonar_cred = credentials('sonar-9.9.2')
+            } 
             steps
             {
                 withSonarQubeEnv('sonar-9.9.2') 
@@ -49,7 +48,7 @@ pipeline
             sh 'mvn clean verify sonar:sonar \
                 -Dsonar.projectKey=maven-practice \
                 -Dsonar.host.url=http://3.26.196.57:9000 \
-                -Dsonar.login="$sonar_cred_PSW"'
+                -Dsonar.login="$sonar_cred_psw"'
         }
         }
     }
