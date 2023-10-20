@@ -25,15 +25,6 @@ pipeline
                 ])
             }
         }
-        stage('Build-Project')
-        {
-            
-            steps
-            {
-                echo "===============================BUILD-PROJECT===================================="
-                sh 'mvn clean package'
-            }
-        }
         stage('SonarQube analysis')
             {
                 environment
@@ -45,12 +36,21 @@ pipeline
                 withSonarQubeEnv('sonar-9.9.2') 
                 {
         
-            sh 'mvn sonar:sonar \
+            sh 'mvn clean sonar:sonar \
             -Dsonar.projectKey=maven-project \
             -Dsonar.host.url=http://3.26.196.57:9000 \
             -Dsonar.login="$sonar_cred_PSW" '
         }
         }
     }
+    stage('Build-Project')
+        {
+            
+            steps
+            {
+                echo "===============================BUILD-PROJECT===================================="
+                sh 'mvn package'
+            }
+        }
     }
 }
