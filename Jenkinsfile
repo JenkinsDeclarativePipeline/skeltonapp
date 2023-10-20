@@ -44,7 +44,7 @@ pipeline
  
             steps
             {
-                sh 'echo sonar-cred $SONAR_CRED_PSW'
+                sh 'echo "sonar-cred $SONAR_CRED_PSW"'
 
                 withSonarQubeEnv('sonar-9.9.2') 
                 {
