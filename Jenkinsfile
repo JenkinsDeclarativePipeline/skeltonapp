@@ -50,7 +50,7 @@ pipeline
                     sh 'mvn clean verify sonar:sonar \
                         -Dsonar.projectKey=maven-practice \
                          -Dsonar.host.url=http://3.26.196.57:9000 \
-                        -Dsonar.login=$usr_cred_psw"'
+                        -Dsonar.login=$usr_cred_psw'
                 }
 
             }
